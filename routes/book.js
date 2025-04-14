@@ -108,7 +108,7 @@ router.put('/updatebook/:id', JwtMiddleware.checkToken, (req, res) => {
                         category_id: category_id
                     },
                         {
-                            where: { id: req.user.id }
+                            where: { id: id }
                         }).then((response) => {
                             res.status(200).json({
                                 status: 1,
@@ -196,8 +196,8 @@ router.delete("/deletebook/:id", JwtMiddleware.checkToken , function(req, res){
         where:{
             id: id
         }
-    }).then((user)=>{
-        if(user){
+    }).then((book)=>{
+        if(book){
             bookModel.destroy({
                 where:{
                     id: req.params.id
